@@ -199,7 +199,7 @@
       "proficiency_label": "Expert"
     },
     {
-      "name": "SQL Databases (PostgreSQL, MySQL, SQL Server)",
+      "name": "SQL Databases (PostgreSQL, MySQL, SQL Server, Sqlite)",
       "proficiency": 90,
       "proficiency_label": "Expert"
     },

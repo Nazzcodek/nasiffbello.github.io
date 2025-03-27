@@ -87,15 +87,15 @@
       ],
       "images": [
         {
-          "img_path": "img/projects/restaurant-pos-1.jpg",
+          "img_path": "img/projects/restaurant-pos-1.png",
           "caption": "POS Dashboard with Sales Analytics"
         },
         {
-          "img_path": "img/projects/restaurant-pos-2.jpg",
+          "img_path": "img/projects/restaurant-pos-3.png",
           "caption": "Inventory Management Interface"
         },
         {
-          "img_path": "img/projects/restaurant-pos-3.jpg",
+          "img_path": "img/projects/restaurant-pos-2.png",
           "caption": "Sales Reporting and Analytics"
         }
       ]

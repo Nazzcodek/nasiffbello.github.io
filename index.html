@@ -1325,6 +1325,44 @@
         <p>© 2025 Nasiff Bello. All rights reserved.</p>
       </div>
     </footer>
+    <!-- Image Lightbox Modal -->
+    <div
+      id="imageLightbox"
+      class="fixed inset-0 z-50 hidden bg-black/80 flex items-center justify-center p-4"
+    >
+      <div class="relative max-w-4xl w-full">
+        <!-- Close button -->
+        <button
+          id="closeLightbox"
+          class="absolute -top-12 right-0 text-white hover:text-gray-300 focus:outline-none"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+        <!-- Image container -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-2xl">
+          <img
+            id="lightboxImage"
+            class="w-full h-auto"
+            src=""
+            alt="Enlarged project image"
+          />
+          <div id="lightboxCaption" class="p-4 bg-gray-100 text-gray-800"></div>
+        </div>
+      </div>
+    </div>
 
     <!-- Optional: Minimal JS for interactive elements -->
     <script>
@@ -1335,6 +1373,55 @@
           document.querySelector(this.getAttribute("href")).scrollIntoView({
             behavior: "smooth",
           });
+        });
+      });
+
+      // Image lightbox functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const lightbox = document.getElementById("imageLightbox");
+        const lightboxImg = document.getElementById("lightboxImage");
+        const lightboxCaption = document.getElementById("lightboxCaption");
+        const closeLightbox = document.getElementById("closeLightbox");
+
+        // Add click event to all project images
+        document.querySelectorAll("figure img").forEach((img) => {
+          img.style.cursor = "pointer";
+          img.addEventListener("click", function () {
+            // Get the full-sized image (remove any size constraints from URL if necessary)
+            lightboxImg.src = this.src;
+
+            // Get the caption from the figcaption
+            const caption = this.nextElementSibling
+              ? this.nextElementSibling.textContent.trim()
+              : "";
+            lightboxCaption.textContent = caption;
+
+            // Show the lightbox
+            lightbox.classList.remove("hidden");
+            document.body.classList.add("overflow-hidden"); // Prevent scrolling
+          });
+        });
+
+        // Close lightbox when clicking the close button
+        closeLightbox.addEventListener("click", function () {
+          lightbox.classList.add("hidden");
+          document.body.classList.remove("overflow-hidden");
+        });
+
+        // Close lightbox when clicking outside the image
+        lightbox.addEventListener("click", function (e) {
+          if (e.target === lightbox) {
+            lightbox.classList.add("hidden");
+            document.body.classList.remove("overflow-hidden");
+          }
+        });
+
+        // Close lightbox with escape key
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && !lightbox.classList.contains("hidden")) {
+            lightbox.classList.add("hidden");
+            document.body.classList.remove("overflow-hidden");
+          }
         });
       });
 
